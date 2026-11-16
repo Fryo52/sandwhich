@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#fffaf0" />
+    <title>SandWhich?</title>
+    <meta name="description" content="パンの切れ目を見抜いて、縦にスパッと切れ！パンは2枚？3枚？ブラウザで遊べるバカゲー。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SandWhich?" />
+    <meta property="og:title" content="SandWhich?" />
+    <meta property="og:description" content="パンの切れ目を見抜いて、縦にスパッと切れ！パンは2枚？3枚？ブラウザで遊べるバカゲー。" />
+    <meta property="og:url" content="https://fryo52.github.io/sandwhich/" />
+    <meta property="og:image" content="https://fryo52.github.io/sandwhich/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="SandWhich? パンとパンの切れ目を縦に切るゲーム" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SandWhich?" />
+    <meta name="twitter:description" content="パンの切れ目を見抜いて、縦にスパッと切れ！パンは2枚？3枚？" />
+    <meta name="twitter:image" content="https://fryo52.github.io/sandwhich/og.png" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <section id="screen-title" class="screen">
+      <div class="card">
+        <h1 class="logo">Sand<span>Which?</span></h1>
+        <p class="lead">パンとパンがくっついている所を<br /><strong>縦にスワイプ</strong>して切り分けろ！</p>
+        <ul class="rules">
+          <li>サンドイッチはパン<strong>2枚</strong>か<strong>3枚</strong></li>
+          <li>レタスの下に切れ目が隠れていることも</li>
+          <li>ハッシュポテトなどの<strong>ニセパン</strong>に注意</li>
+          <li>ミスか時間切れでライフ −1（ライフ5）</li>
+        </ul>
+        <button id="btn-start" class="btn primary">スタート</button>
+        <button id="btn-ranking" class="btn">ランキング</button>
+        <button id="btn-titles" class="btn">称号一覧</button>
+      </div>
+    </section>
+
+    <section id="screen-result" class="screen hidden">
+      <div class="card">
+        <h2>しゅうりょう</h2>
+        <p class="big-score" id="result-score">0</p>
+        <p class="rank-title">
+          <span class="rank-label">称号<span id="result-new" class="new-badge hidden">NEW!</span></span>
+          <span id="result-title"></span>
+        </p>        <p class="sub" id="result-detail"></p>
+        <form id="form-submit" class="submit">
+          <input id="input-name" type="text" maxlength="12" placeholder="なまえ（12文字まで）" autocomplete="nickname" />
+          <button id="btn-submit" class="btn primary" type="submit">スコアを投稿</button>
+          <p id="submit-msg" class="msg"></p>
+        </form>
+        <button id="btn-share" class="btn share">𝕏 でシェア</button>
+        <button id="btn-retry" class="btn">もう一回</button>
+        <button id="btn-result-ranking" class="btn">ランキング</button>
+        <button id="btn-result-titles" class="btn">称号一覧</button>
+      </div>
+    </section>
+
+    <section id="screen-titles" class="screen hidden">
+      <div class="card ranking-card">
+        <h2>称号一覧</h2>
+        <p class="sub" id="titles-count"></p>
+        <ol id="titles-list" class="titles"></ol>
+        <p class="sub">この端末で手に入れた称号が記録されます</p>
+        <button id="btn-titles-back" class="btn">もどる</button>
+      </div>
+    </section>
+
+    <section id="screen-ranking" class="screen hidden">
+      <div class="card ranking-card">
+        <h2>ランキング</h2>
+        <p class="sub" id="ranking-mode"></p>
+        <ol id="ranking-list" class="ranking"></ol>
+        <button id="btn-back" class="btn">もどる</button>
+      </div>
+    </section>
+
+    <button id="btn-mute" class="mute" aria-label="音を消す">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <path class="speaker" d="M4 9h4l5-4v14l-5-4H4z" />
+        <g class="waves">
+          <path d="M16 9.5a3.5 3.5 0 0 1 0 5" />
+          <path d="M18.5 7a7 7 0 0 1 0 10" />
+        </g>
+        <g class="cross">
+          <path d="M16 9.5l5 5" />
+          <path d="M21 9.5l-5 5" />
+        </g>
+      </svg>
+    </button>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
